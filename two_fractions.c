@@ -1,9 +1,7 @@
-//WAP to find the sum of two fractions.
-
 #include <stdio.h>
 #include <math.h>
 struct fraction{
-    float num, den;
+    int num, den;
 };
 
 int gcd(int a, int b) 
@@ -13,7 +11,7 @@ int gcd(int a, int b)
     return gcd(b%a, a); 
 } 
 
-void lowest(float den3, float num3) 
+void lowest(int den3, int num3) 
 { 
 
     int common_factor = gcd(num3,den3); 
@@ -25,7 +23,7 @@ struct fraction get_prams()
 {
     struct fraction p1;
     printf("\nEnter the fraction(num,den): ");
-    scanf("%f %f",&p1.num,&p1.den);
+    scanf("%d %d",&p1.num,&p1.den);
     return p1;
 }
 
@@ -39,6 +37,6 @@ int main(){
     den3 = (c1.den*c2.den) / den3;
     num3 = (c1.num)*(den3/c1.den) + (c2.num)*(den3/c2.den);
     lowest(den3,num3);
-    printf("\nResultatnt: %d / %d \n",num3,den3);
+    printf("\n Sum of %d/%d and %d/%d is : %d/%d \n",c1.num,c1.den,c2.num,c2.den,num3,den3);
     return 0;
 }
