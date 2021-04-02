@@ -26,17 +26,30 @@ struct fraction get_prams()
     scanf("%d %d",&p1.num,&p1.den);
     return p1;
 }
+struct fraction computeone( struct fraction c1 , struct fraction c2)
+{
+  struct fraction temp;
+  
+  int num3, den3;
+    den3 = gcd(c1.den,c2.den);
+    den3 = (c1.den*c2.den) / den3;
+    num3 = (c1.num)*(den3/c1.den) + (c2.num)*(den3/c2.den);
+    temp.num = num3;
+    temp.den = den3;
+    lowest(den3,num3);
+  return temp;
+};
+void outputone(struct fraction c1 , struct fraction c2, struct fraction c3)
+{
+  printf("\n Sum of %d/%d and %d/%d is : %d/%d \n",c1.num,c1.den,c2.num,c2.den,c3.num,c3.den);
+};
 
 
 int main(){
-    struct fraction c1,c2;
-    int num3,den3;
+    struct fraction c1,c2,c3;
     c1=get_prams();
     c2=get_prams();
-    den3=gcd(c1.den,c2.den);
-    den3 = (c1.den*c2.den) / den3;
-    num3 = (c1.num)*(den3/c1.den) + (c2.num)*(den3/c2.den);
-    lowest(den3,num3);
-    printf("\n Sum of %d/%d and %d/%d is : %d/%d \n",c1.num,c1.den,c2.num,c2.den,num3,den3);
+    c3=computeone(c1,c2);
+    outputone(c1,c2,c3);
     return 0;
 }
